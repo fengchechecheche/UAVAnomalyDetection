@@ -1,6 +1,7 @@
 %% ALFA Dataset Feature Selection and Export
 % take processed datafiles, extract necessary information. Export as CSV to
 % make training set that can be used with Python
+% 获取处理过的数据，提取必要的信息。导出为CSV，使训练集可以与Python一起使用
 
 % Necessary Features:
 %{
