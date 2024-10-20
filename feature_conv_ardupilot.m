@@ -26,11 +26,11 @@ Labels:
 Non-failure
 Failure
 
-47 Flights, ~80% expected outliers
+47 Flights, ~80% expected outliers 预期的异常值
 
 %}
 
-%% Iterate through each subfolder in our directory
+%% Iterate through each subfolder in our directory 遍历我们目录中的每个子文件夹
 folder_dir = "piac2"
 X_data = []; % Empty matrix for X data
 Y_labels = [];
@@ -41,34 +41,34 @@ for k = 3:length(D) % Avoid using the first 2 files ('.' and '..')
     % Load the MAT File
     load(folder_dir + "/" + currF);
     % Get the X row feature vector and Y row label
-    % Create a row vector of all the features for the sample flight
+    % Create a row vector of all the features for the sample flight 创建一个包含样本航班所有特征的行向量。
     % Now extract data
     alt = BARO(:,3);
     rel_alt = POS(:,5);
-    % Get mean of baro altitude and rel altitude
+    % Get mean of baro altitude and rel altitude 获取气压高度和相对高度的平均值。
     x1_baro_alt_mean = mean(alt);
     x1_rel_alt_mean = mean(rel_alt);
-    % Get 3 Axis longitudinal acceleration get mean and absolute max
+    % Get 3 Axis longitudinal acceleration get mean and absolute max 获取三轴纵向加速度，计算其平均值和绝对最大值。
     x2_long_accel_x_mean = mean(IMU(:,6)); 
     x2_long_accel_x_max = getAbsMax(IMU(:,6));
     x2_long_accel_y_mean = mean(IMU(:,7));
     x2_long_accel_y_max = getAbsMax(IMU(:,7));
     x2_long_accel_z_mean = mean(IMU(:,8)); 
     x2_long_accel_z_max = getAbsMax(IMU(:,8));
-    % Get heading
+    % Get heading 获取航向。
     heading = GPS(:,14);
     x3_heading_mean = mean(heading);
-    % Ground Velocity mean and max
+    % Ground Velocity mean and max 地面速度的平均值和最大值。
     x4_velocity_x_mean = mean(NKF1(:, 6));
     x4_velocity_x_max = max(NKF1(:, 6));
     x4_velocity_y_mean = mean(NKF1(:, 7));
     x4_velocity_y_max = max(NKF1(:, 7));
-    % Pitch and Roll Mean and Abs Max
+    % Pitch and Roll Mean and Abs Max 俯仰角和平滚角的平均值和绝对最大值。
     x5_roll_mean = mean(ATT(:,4));
     x5_roll_max = getAbsMax(ATT(:,4));
     x5_pitch_mean = mean(ATT(:,6));
     x5_pitch_max = getAbsMax(ATT(:,6));
-    % Get Lat and Long Mean and First, also save to variable to plot later
+    % Get Lat and Long Mean and First, also save to variable to plot later 获取纬度和经度的平均值以及第一个值，同时将它们保存到变量中以便稍后绘图。
     long = POS(:, 4);
     lat = POS(:, 3);
     x6_long_first = long(1);
